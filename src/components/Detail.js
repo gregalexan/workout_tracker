@@ -37,11 +37,11 @@ const Detail = ({exerciseDetail}) => {
             variant='h3'
             textTransform='capitalize'
         >
-            {name}
+            <span style={{color: '#64D7D6'}}>{name}</span>
         </Typography>
         <Typography variant='h6'>
-            Exercises keep you strong. {name} {` `} 
-            is one of the best exercises to target your {target}. It will improve your mood and gain energy!
+            Exercises keep you strong. <span style={{textTransform: 'capitalize', color: '#64D7D6'}}>{name}</span> {` `} 
+            is one of the best exercises to target your <span style={{color: '#64D7D6'}}>{target}</span>. It will improve your mood and gain energy!
         </Typography>
         {extraDetail.map((item, index) => (
             <Stack
@@ -64,7 +64,7 @@ const Detail = ({exerciseDetail}) => {
                     variant='h5'
                     textTransform='capitalize'
                 >
-                    {item.name}
+                    <span style={{color: '#64D7D6'}}>{item.name}</span>
                 </Typography>
             </Stack>
         ))}

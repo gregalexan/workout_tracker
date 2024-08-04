@@ -11,7 +11,7 @@ const SimilarExercises = ({targetMuscleExercises, equipmentExercises}) => {
         }}
     >
       <Typography variant='h3' mb={5}>
-        Exercises that target the same muscle group
+        Exercises that target the <span style={{color: '#64D7D6'}}>same muscle group</span>
       </Typography>
       <Stack
         direction='row'
@@ -26,7 +26,7 @@ const SimilarExercises = ({targetMuscleExercises, equipmentExercises}) => {
        }
     </Stack>
     <Typography variant='h3' mb={5}>
-        Exercises that use the same equipment
+        Exercises that use the <span style={{color: '#64D7D6'}}>same equipment</span>
       </Typography>
       <Stack
         direction='row'
