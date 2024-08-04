@@ -7,7 +7,6 @@ body {
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
-
 }
 
 ::-webkit-scrollbar {
@@ -59,7 +58,7 @@ body {
   top: 0px;
   width: 700px;
   height: 900px;
-  margin-top: -330px;
+  margin-top: -250px;
   border-radius: 15px;
 }
 

@@ -43,9 +43,9 @@ const Detail = ({exerciseDetail}) => {
             Exercises keep you strong. {name} {` `} 
             is one of the best exercises to target your {target}. It will improve your mood and gain energy!
         </Typography>
-        {extraDetail.map((item) => (
+        {extraDetail.map((item, index) => (
             <Stack
-                key={item.name}
+                key={index}
                 direction='row'
                 gap='24px'
                 alignItems='center'

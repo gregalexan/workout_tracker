@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import { useParams } from 'react-router-dom';
 import { Box } from '@mui/material';
 import {exerciseOptions, fetchData, youtubeOptions} from '../utils/fetchData';
-import { Details } from '@mui/icons-material';
 import Detail from '../components/Detail';
 import ExerciseVideos from '../components/ExerciseVideos';
 import SimilarExercises from '../components/SimilarExercises';
@@ -10,16 +9,35 @@ import SimilarExercises from '../components/SimilarExercises';
 const ExerciseDetail = () => {
   const [exerciseDetail, setexerciseDetail] = useState({});
   const {id} = useParams();
-  const [exerciseVideos, setexerciseVideos] = useState([])
+  const [exerciseVideos, setexerciseVideos] = useState([]);
+  const [targetMuscleExercises, setTargetMuscleExercises] = useState([]);
+  const [equipmentExercises, setEquipmentExercises] = useState([]);
+
+
   useEffect(() => {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+
     const fetchExercisesData = async () => {
       const exerciseDbUrl = 'https://exercisedb.p.rapidapi.com';
+      if (!id) {
+        console.error("No id provided")
+        return;
+      }
+      
+
       const youtubeSearchUrl = 'https://youtube-search-and-download.p.rapidapi.com';
       const exerciseDetailData = await fetchData(`${exerciseDbUrl}/exercises/exercise/${id}`, exerciseOptions);
       setexerciseDetail(exerciseDetailData);
 
       const exerciseVideosData = await fetchData(`${youtubeSearchUrl}/search?query=${exerciseDetailData.name}`, youtubeOptions);
       setexerciseVideos(exerciseVideosData.contents);
+
+      const targetMuscleExercisesData = await fetchData(`${exerciseDbUrl}/exercises/target/${exerciseDetailData.target}`, exerciseOptions);
+      setTargetMuscleExercises(targetMuscleExercisesData);
+      const equipmentExercisesData = await fetchData(`${exerciseDbUrl}/exercises/equipment/${exerciseDetailData.equipment}`, exerciseOptions);
+      setEquipmentExercises(equipmentExercisesData);
+
+
     }
     fetchExercisesData();
   }, [id])
@@ -27,7 +45,7 @@ const ExerciseDetail = () => {
     <Box>
         <Detail exerciseDetail={exerciseDetail} />
         <ExerciseVideos exerciseVideos={exerciseVideos} name={exerciseDetail.name} />
-        <SimilarExercises />      
+        <SimilarExercises targetMuscleExercises={targetMuscleExercises} equipmentExercises={equipmentExercises} />      
     </Box>
   )
 }
