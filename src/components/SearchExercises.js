@@ -43,7 +43,7 @@ const SearchExercises = ({setExercises, bodyPart, setBodyPart}) => {
         mb='50px'
         textAlign='center'
       >
-          Awesome Exercises You <br /> Should Know
+          Awesome Exercises <span style={{color: '#64d7d6'}}>You</span> <br /> <span style={{color: '#64d7d6'}}>Should</span> Know
       </Typography>
       <Box
         position='relative'
